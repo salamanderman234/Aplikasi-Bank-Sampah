@@ -5,6 +5,10 @@
  */
 package Bank_sampah;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -326,6 +330,22 @@ public class Sign_Up3 extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jLabel_toHomeMouseClicked
+    
+    //event mouse masuk pada label kembali ke home yang akan berubah menjadi teks underline dan berwarna kuning jika mouse diarahkan ke label
+    private void jLabel_toHomeMouseEntered(java.awt.event.MouseEvent evt) {                                           
+        Font font = jLabel_toHome.getFont();
+        HashMap<TextAttribute, Object> attributes = new HashMap<>();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel_toHome.setFont(font.deriveFont(attributes));
+        jLabel_toHome.setForeground(Color.YELLOW);
+        jLabel_toHome.setCursor( Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));        
+    }
+    //event mouse keluar pada label kembali ke home yang akan merubah label ke keadaan semua jika mouse sudah tidak lagi menunjuk label
+    private void jLabel_toHomeMouseExited(java.awt.event.MouseEvent evt) {                                          
+            Font temp = new Font("Segoe UI",Font.BOLD,14);
+            jLabel_toHome.setFont(temp);
+            jLabel_toHome.setForeground(Color.WHITE);      
+    }
 
     private void jLabel_Minimize1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_Minimize1MouseClicked
         // TODO add your handling code here:
@@ -353,6 +373,7 @@ public class Sign_Up3 extends javax.swing.JFrame {
             return true;
         }      
     }
+    
     //Method untuk melakukan verify apakah username sudah digunakan sebelumnya
     public boolean cek_Username(String username) {
         PreparedStatement st;
